@@ -1,0 +1,14 @@
+repository: HlidacStatu/hlidacstatu.github.io
+gems:
+  - jekyll-github-metadata
+
+selected_repositories:
+  Hlídač státu:
+    - HlidacStatu
+    - Datasety
+    - API
+  Veřejné zakázky:
+    - verejne-zakazky
+  Ostatní:
+    - volicsky-prukaz
+    - Wordpress-plugin
