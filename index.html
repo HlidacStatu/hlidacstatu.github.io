@@ -1,19 +1,127 @@
-<!DOCTYPE html>
-<html>
-<body>
-<h1>Hlídač státu - github</h1>
-<h2>GitHub projekty</h2>
-<p>
-<ul>
-	<li><a href="https://hlidacstatu.github.io/VerejneZakazky">Veřejné zakázky</a></li>
-	<li><a href="https://github.com/HlidacStatu/Volicsky-Prukaz">Voličský průkaz</a></li>
-</ul>
-</p>
-<h2>Další informace pro vývojáře</h2>
-<p>
-<ul>
-	<li><a href="https://www.hlidacstatu.cz/API">API</a></li>
+---
+layout: null
+---
 
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generated" content="{{ site.time }}">
+    <title>Hlídač státu - GitHub</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- custom build, grid only -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/i/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="img/i/favicon-16x16.png" sizes="16x16" />
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="img/i/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="img/i/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="img/i/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="img/i/apple-touch-icon-152x152.png" />
+
+    <style>
+        #masthead {
+            background-image: url('img/bg.png');
+            background-size: cover;
+            background-position: 50% 0;
+            background-repeat: no-repeat;
+            padding: 5em 0 5em 0;
+            margin-bottom: 3em;
+            text-align: center;
+            color: white;
+            height: 450px;
+        }
+        #masthead a:hover { color: white; }
+        h1 { text-shadow: 0 1px 1px rgba(0,0,0,0.5); }
+        #logo {
+            position: absolute;
+            left: 50px;
+            top: 30px;
+            width: 110px;
+            height: auto;
+        }
+        .intro {
+            font-size: 130%;
+        }
+        body {
+            font-size: 160%;
+            padding: 0;
+            margin: 0;
+        }
+        .repository {
+            margin-bottom: 0.7em;
+        }
+        .category {
+            margin-bottom: 1em;
+        }
+        h4 { margin: 0; }
+        h2 { margin: 0.5em 0 0.5em 0; }
+        .repository h4 {
+            margin-bottom: 0.1em;
+            font-size: 130%;
+        }
+        .desc { margin-top: 0.2em; }
+        .stats div {
+            display: inline;
+            margin-right: 1em;
+        }
+        a {
+            color: white;
+        }
+        a.repository {
+            color: black;
+            text-decoration: none;
+        }
+        a:hover h4 {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="masthead">
+        <a href="https://www.hlidacstatu.cz/" title="hlidacstatu.cz">
+            <img src="img/hlidacstatu.png" id="logo">
+        </a>
+    </div>
+    <div class="container">
+
+        <div class="category row">
+            <div class="col-xs-12">
+                <h1>Hlídač státu</h1>
+            </div>
+            <div class="intro">
+                Cílem Hlídač státu z.ú. není pouze kritizovat a poukazovat na zoufalý stav fungování českého státu, ale zejména mu pomoci se změnit, 
+                seznámit ho s trendy a principy moderního  státu, nastavit základní principy digitalizace služeb a procesů státu a být aktivně této 
+                změně nápomocni.
+            </div>        
+            <div class="intro">
+                Další informace pro vývojáře jsou k dispozici na stránce <a href="https://www.hlidacstatu.cz/API">API</a>.
+            </div>        
+        </div>
+
+        {% for repo_category in site.selected_repositories %}
+        <div class="category row">
+            <div class="col-xs-12">
+                <h2>{{ repo_category[0] }}</h2>
+            </div>
+            {% for repo_name in repo_category[1] %} {% for repo in site.github.public_repositories %} {% if repo_name == repo.name %}
+            <a class="repository col-xs-12 col-sm-6 col-md-4" href="{{ repo.html_url }}">
+                <h4>{{ repo.name }}</h4>
+                <div class="stats">
+                    <div><span class="octicon octicon-star"></span>{{ repo.stargazers_count }}</div>
+                    <div><span class="octicon octicon-repo-forked"></span>{{ repo.forks_count }}</div>
+                </div>
+                <div class="desc">
+                    {{ repo.description }}
+                </div>
+            </a>
+            {% endif %} {% endfor %} {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
