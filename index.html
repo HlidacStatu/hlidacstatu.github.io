@@ -45,6 +45,7 @@ layout: null
         }
         .intro {
             font-size: 130%;
+            margin: 0.5em 0 0.5em 0;
         }
         body {
             font-size: 160%;
@@ -69,9 +70,6 @@ layout: null
             margin-right: 1em;
         }
         a {
-            color: white;
-        }
-        a.repository {
             color: black;
             text-decoration: none;
         }
@@ -99,8 +97,9 @@ layout: null
                 změně nápomocni.
             </div>        
             <div class="intro">
-                Další informace pro vývojáře jsou k dispozici na stránce <a href="https://www.hlidacstatu.cz/API">API</a>.
-            </div>        
+                Další informace pro vývojáře jsou k dispozici na stránce <a href="https://www.hlidacstatu.cz/API">API</a> případně se s námi můžete 
+                spojit na <a href="https://join.slack.com/t/hlidacstatu/shared_invite/enQtNDEyNjgxNzM3NTQxLTZiMzVmZmE4ZGQ0NzdiZDY2MTk3ZjA0OWI2ZmI3NGNjMjRmZjlhZDg0ODc1YmUzMTM0ZDVjYTQ4MmIxOGFiYWM">Slacku</a>.
+            </div>            
         </div>
 
         {% for repo_category in site.selected_repositories %}
